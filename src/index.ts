@@ -358,3 +358,5 @@ const port = 3001;
     //     // Ensure the process exits on startup failure
     //     process.exit(1);
     // });
+
+    module.exports = app;
