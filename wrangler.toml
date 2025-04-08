@@ -1,6 +1,6 @@
 # wrangler.toml configuration file for Cloudflare Workers
-name = "express-cloudflare-app"
-main = "worker.js"
+name = "test"
+main = "dist/index.js"
 compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2025-04-08"
 
