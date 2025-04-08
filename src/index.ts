@@ -4,6 +4,11 @@ import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { z } from 'zod';
 import express, { Request, Response } from 'express';
 
+const server = new McpServer({
+    name: "liblab",
+    version: "1.0.0",
+});
+
 type ApiResponse = {
     content: Array<{
         type: string;
@@ -137,11 +142,6 @@ function formatSuccessResponse(data: any): ApiResponse {
         ]
     };
 }
-
-const server = new McpServer({
-    name: "liblab",
-    version: "1.0.0",
-});
 
 // Breeds Service
 server.tool("get_breeds", "list breeds", {
