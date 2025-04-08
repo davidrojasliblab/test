@@ -1,0 +1,29 @@
+# wrangler.toml configuration file for Cloudflare Workers
+name = "express-cloudflare-app"
+main = "worker.js"
+compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2025-04-08"
+
+# Configure your account ID and zone ID
+# account_id = "your-cloudflare-account-id"
+# zone_id = "your-cloudflare-zone-id"
+
+# Routes configuration
+# routes = [
+#   { pattern = "example.com/*", zone_id = "your-cloudflare-zone-id" }
+# ]
+
+[
+env.production
+]
+workers_dev = true
+
+[
+build
+]
+command = "npm run build"
+
+[
+site
+]
+bucket = "./public"  # Static files directory
