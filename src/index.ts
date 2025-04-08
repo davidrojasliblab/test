@@ -366,16 +366,31 @@ async function startWithStdioTransport(): Promise<void> {
     await server.connect(transport);
 }
 
-// Start the server
-async function main(): Promise<void> {
-    if (process.env.NODE_ENV === 'production') {
-        await startSSEServerTransport();
-    } else {
-        await startWithStdioTransport();
-    }
-}
+const port = 3000;
+    console.info(`Starting the server using SSE! Listening on ${port}`);
+    const app = express();
 
-main().catch((error) => {
-    console.error("Fatal error in main():", error);
-    process.exit(1);
-});
+    // to support multiple simultaneous connections we have a lookup object from
+    // sessionId to transport
+    const transports: {[sessionId: string]: SSEServerTransport} = {};
+
+    app.get("/sse", async (_: Request, res: Response) => {
+        const transport = new SSEServerTransport('/messages', res);
+        transports[transport.sessionId] = transport;
+        res.on("close", () => {
+            delete transports[transport.sessionId];
+        });
+        await server.connect(transport);
+    });
+
+    app.post("/messages", async (req: Request, res: Response) => {
+        const sessionId = req.query.sessionId as string;
+        const transport = transports[sessionId];
+        if (transport) {
+            await transport.handlePostMessage(req, res);
+        } else {
+            res.status(400).send('No transport found for sessionId');
+        }
+    });
+
+    app.listen(port);
