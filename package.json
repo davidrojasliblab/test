@@ -10,7 +10,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "test": "tsc --noEmit",
-    "build": "tsc --outDir dist",
+    "build": "tsc --outDir dist && node dist/index.js",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
