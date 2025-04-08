@@ -1,6 +1,6 @@
 // worker.js - Entry point for Cloudflare Workers
 import { createRequestHandler } from '@cloudflare/next-on-pages';
-import app from './dist/index.js';
+import app from './index.ts';
 
 // Create a request handler for Cloudflare Workers
 const handler = createRequestHandler({
