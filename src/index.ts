@@ -352,7 +352,9 @@ const port = 3001;
     });
 
     const expServer = app.listen(port, () => {
-        console.log(`Starting the server using SSE! Listening on ${port}`);
+        console.log(`Server is now running and listening on port ${port}`);
+    }).on('error', (err) => {
+        console.error('Failed to start server:', err);
+        // Ensure the process exits on startup failure
+        process.exit(1);
     });
-
-    module.exports = expServer
