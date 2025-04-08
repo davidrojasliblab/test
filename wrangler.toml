@@ -12,18 +12,3 @@ compatibility_date = "2025-04-08"
 # routes = [
 #   { pattern = "example.com/*", zone_id = "your-cloudflare-zone-id" }
 # ]
-
-[
-env.production
-]
-workers_dev = true
-
-[
-build
-]
-command = "npm run build"
-
-[
-site
-]
-bucket = "./public"  # Static files directory
