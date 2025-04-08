@@ -1,0 +1,43 @@
+{
+  "name": "liblab",
+  "version": "1.0.0",
+  "description": "![cat-api-logo](https://thecatapi.com/_app/immutable/assets/thecatapi-logo.78868573.svg)\\n\\n## An open, free, read & write API all about Cats\\nThe Cat API gives you access to 10000's of Cat images, and breeds.\\n- Upload your own Images\\n- Get detailed info on all Cat Breeds\\n- Allow your Users to Favourite or Vote on Images\\n- Save a custom value with each request so you can match data to your Users\\n\\n## How do i get access?\\nJust sign up for an API Key from https://thecatapi.com for free. We're looking forward to seeing what you build!\\nDon't forget to checkout it's sister API - TheDogAPI.com",
+  "source": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "browser": "./dist/index.js",
+  "unpkg": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "test": "tsc --noEmit",
+    "build": "tsc --outDir dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "typescript",
+    "mcp",
+    "api",
+    "client"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "ThatAPICompany",
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "@types/node": "^22.14.0"
+  },
+  "dependencies": {
+    "zod": "^3.24.2",
+    "@modelcontextprotocol/sdk": "^1.8.0"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
