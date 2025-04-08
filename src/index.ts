@@ -325,12 +325,7 @@ server.tool("get_groups_by_id", "get group with non-existing id", {
         }
     });
 
-
-
-// Start the server using SSE transport
-async function startSSEServerTransport(): Promise<void> {
-    const port = 3000;
-    console.info(`Starting the server using SSE! Listening on ${port}`);
+const port = 3001;
     const app = express();
 
     // to support multiple simultaneous connections we have a lookup object from
@@ -356,41 +351,8 @@ async function startSSEServerTransport(): Promise<void> {
         }
     });
 
-    app.listen(port);
-}
-
-// Function to handle local stdio development
-async function startWithStdioTransport(): Promise<void> {
-    console.info(`Starting the server using Stdio!`);
-    const transport = new StdioServerTransport();
-    await server.connect(transport);
-}
-
-const port = 3000;
-    console.info(`Starting the server using SSE! Listening on ${port}`);
-    const app = express();
-
-    // to support multiple simultaneous connections we have a lookup object from
-    // sessionId to transport
-    const transports: {[sessionId: string]: SSEServerTransport} = {};
-
-    app.get("/sse", async (_: Request, res: Response) => {
-        const transport = new SSEServerTransport('/messages', res);
-        transports[transport.sessionId] = transport;
-        res.on("close", () => {
-            delete transports[transport.sessionId];
-        });
-        await server.connect(transport);
+    const expServer = app.listen(port, () => {
+        console.log(`Starting the server using SSE! Listening on ${port}`);
     });
 
-    app.post("/messages", async (req: Request, res: Response) => {
-        const sessionId = req.query.sessionId as string;
-        const transport = transports[sessionId];
-        if (transport) {
-            await transport.handlePostMessage(req, res);
-        } else {
-            res.status(400).send('No transport found for sessionId');
-        }
-    });
-
-    app.listen(port);
+    module.exports = expServer
