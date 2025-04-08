@@ -359,4 +359,4 @@ const port = 3001;
     //     process.exit(1);
     // });
 
-    module.exports = app;
+export default app;
