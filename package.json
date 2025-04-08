@@ -1,7 +1,7 @@
 {
   "name": "liblab",
   "version": "1.0.0",
-  "description": "![cat-api-logo](https://thecatapi.com/_app/immutable/assets/thecatapi-logo.78868573.svg)\\n\\n## An open, free, read & write API all about Cats\\nThe Cat API gives you access to 10000's of Cat images, and breeds.\\n- Upload your own Images\\n- Get detailed info on all Cat Breeds\\n- Allow your Users to Favourite or Vote on Images\\n- Save a custom value with each request so you can match data to your Users\\n\\n## How do i get access?\\nJust sign up for an API Key from https://thecatapi.com for free. We're looking forward to seeing what you build!\\nDon't forget to checkout it's sister API - TheDogAPI.com",
+  "description": "The Dog API provides a wealth of information on dog breeds, groups, and fun facts. Access and integrate this data into your website or application with our easy-to-use JSON API.",
   "source": "./src/index.ts",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -24,13 +24,15 @@
     "dist",
     "README.md"
   ],
-  "author": "ThatAPICompany",
+  "author": "",
   "devDependencies": {
     "typescript": "^5.8.2",
-    "@types/node": "^22.14.0"
+    "@types/node": "^22.14.0",
+    "@types/express": "^5.0.1"
   },
   "dependencies": {
     "zod": "^3.24.2",
+    "express": "^5.1.0",
     "@modelcontextprotocol/sdk": "^1.8.0"
   },
   "exports": {
