@@ -1,8 +1,6 @@
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
-import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import { z } from 'zod';
-import express, { Request, Response } from 'express';
 
 const server = new McpServer({
     name: "liblab",
@@ -325,38 +323,16 @@ server.tool("get_groups_by_id", "get group with non-existing id", {
         }
     });
 
-const port = 3001;
-    const app = express();
 
-    // to support multiple simultaneous connections we have a lookup object from
-    // sessionId to transport
-    const transports: {[sessionId: string]: SSEServerTransport} = {};
 
-    app.get("/sse", async (_: Request, res: Response) => {
-        const transport = new SSEServerTransport('/messages', res);
-        transports[transport.sessionId] = transport;
-        res.on("close", () => {
-            delete transports[transport.sessionId];
-        });
-        await server.connect(transport);
-    });
+// Start the server
+async function main(): Promise<void> {
+    const transport = new StdioServerTransport();
+    await server.connect(transport);
+    console.error("liblab MCP Server running on stdio");
+}
 
-    app.post("/messages", async (req: Request, res: Response) => {
-        const sessionId = req.query.sessionId as string;
-        const transport = transports[sessionId];
-        if (transport) {
-            await transport.handlePostMessage(req, res);
-        } else {
-            res.status(400).send('No transport found for sessionId');
-        }
-    });
-
-    // const expServer = app.listen(port, () => {
-    //     console.log(`Server is now running and listening on port ${port}`);
-    // }).on('error', (err) => {
-    //     console.error('Failed to start server:', err);
-    //     // Ensure the process exits on startup failure
-    //     process.exit(1);
-    // });
-
-export default { app };
+main().catch((error) => {
+    console.error("Fatal error in main():", error);
+    process.exit(1);
+});

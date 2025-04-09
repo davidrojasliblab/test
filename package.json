@@ -8,6 +8,7 @@
   "browser": "./dist/index.js",
   "unpkg": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "test": "tsc --noEmit",
     "build": "tsc --outDir dist",
@@ -26,12 +27,17 @@
   "author": "",
   "devDependencies": {
     "typescript": "^5.8.2",
-    "@types/node": "^22.14.0",
-    "@types/express": "^5.0.1"
+    "@types/node": "^22.14.0"
   },
   "dependencies": {
     "zod": "^3.24.2",
-    "express": "^5.1.0",
     "@modelcontextprotocol/sdk": "^1.8.0"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
   }
 }
