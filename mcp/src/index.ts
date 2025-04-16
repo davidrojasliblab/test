@@ -9,7 +9,7 @@ const server = new McpServer({
 });
 
 const liblab = new Liblab({
-  token: process.env.TOKEN,
+  token: process.env.TOKEN || '',
   baseUrl: process.env.BASE_URL || 'http://api.funtranslations.com',
 });
 
