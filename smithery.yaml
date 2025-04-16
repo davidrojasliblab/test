@@ -1,0 +1,30 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - token
+    properties:
+      baseUrl:
+        type: string
+        description: Optional override for the API host.
+      token:
+        type: string
+        description: Token required for authentication.
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['dist/index.js'],
+      env: {
+        BASE_URL: config.baseUrl || 'http://api.funtranslations.com',
+        TOKEN: config.token
+      }
+    })
+  exampleConfig:
+    baseUrl: https://api.funtranslations.com
+    token: YOUR_SECRET_TOKEN
