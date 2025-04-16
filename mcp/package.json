@@ -1,0 +1,45 @@
+{
+  "name": "liblab-mcp",
+  "version": "1.0.0",
+  "description": "Funtranslations API gives access to the full set of translations available at funtranslations.com so that you can integrate them in your workflow or an app. Click here to get details and subscribehttpfuntranslations.comapi . Here are the individual API links    Morse code API    Morse code conversion API on the cloud. Translate to and from Morse Code.Click here to subscribehttpfuntranslations.comapimorse    Braille API    Braille conversion API on the cloud. Translate to Braille and get Braille results suitable for many display types.Click here to subscribehttpfuntranslations.comapibraille         Starwars Translation API    Ever wonder how to talk like Yoda Well, use our API and let your APPwebpage speak like Yoda too.Click here to subscribehttpfuntranslations.comapiyoda        Sith Translator API. Click here to subscribehttpfuntranslations.comapisith       Cheunh Translator API. Click here to subscribehttpfuntranslations.comapicheunh       Huttese Translator API. Click here to subscribehttpfuntranslations.comapihuttese      Mandalorian Translator API. Click here to subscribehttpfuntranslations.comapimandalorian      Gungan Translator API. Click here to subscribehttpfuntranslations.comapigungan       Pirate Speak Translation API    Ahoy, matey. Let's get those land lubbers speak our tounge too Our evergreen pirate speak tranlsator API.Click here to subscribehttpfuntranslations.comapipirate     Valley Speak Translation API    Our throwback Valspeak translations API.Click here to subscribehttpfuntranslations.comapivalspeak        Minion Speak Translation API    Our evil master following minion speak translations API.Click here to subscribehttpfuntranslations.comapiminion",
+  "source": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "browser": "./dist/index.js",
+  "unpkg": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "test": "tsc --noEmit",
+    "setup": "npm --prefix ../ install && npm --prefix ../ run build && npm install && npm run build",
+    "build": "tsc --outDir dist",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "typescript",
+    "mcp",
+    "api",
+    "client"
+  ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "author": "Fun Translations",
+  "devDependencies": {
+    "typescript": "5.3.3",
+    "@types/node": "^22.14.0"
+  },
+  "dependencies": {
+    "liblab": "file:../",
+    "zod": "^3.24.2",
+    "@modelcontextprotocol/sdk": "^1.8.0"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}

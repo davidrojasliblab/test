@@ -1,0 +1,185 @@
+{
+  "liblabVersion": "2.25.5",
+  "date": "2025-04-16T21:09:11.659Z",
+  "config": {
+    "generateMCP": true,
+    "deliveryMethods": ["zip"],
+    "languages": ["typescript"],
+    "sdkName": "liblab",
+    "sdkVersion": "1.0.0",
+    "apiVersion": "1.0.0",
+    "baseUrl": "http://api.funtranslations.com",
+    "authentication": {
+      "access": {
+        "prefix": "Bearer"
+      }
+    },
+    "auth": ["bearer"],
+    "languageOptions": {
+      "typescript": {
+        "compilerOptions": {
+          "target": "ES2021",
+          "module": "commonjs",
+          "lib": ["ES2021", "dom"]
+        },
+        "generateEnumAs": "enum"
+      }
+    },
+    "environmentVariables": [
+      {
+        "name": "BASE_URL",
+        "description": "Optional - This variable will override the default API host."
+      },
+      {
+        "name": "TOKEN",
+        "description": "Token required for authentication."
+      }
+    ],
+    "retry": {
+      "enabled": true,
+      "maxAttempts": 3,
+      "retryDelay": 150,
+      "maxDelay": 5000,
+      "retryDelayJitter": 50,
+      "backOffFactor": 2,
+      "httpCodesToRetry": [500, 502, 503, 504],
+      "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE"]
+    },
+    "generateEnv": true,
+    "multiTenant": true,
+    "includeWatermark": false,
+    "inferServiceNames": false,
+    "usesFormData": false,
+    "privateRepo": false,
+    "reservedKeywords": [],
+    "githubRef": "",
+    "fileOutput": "/tmp",
+    "tempDir": "output",
+    "hooksLocation": {
+      "bucketKey": "hooks.zip",
+      "bucketName": "hooks-bucket"
+    },
+    "language": "typescript",
+    "deliveryMethod": "zip",
+    "hooks": {
+      "enabled": true,
+      "sourceDir": "/tmp/resources/hooks"
+    },
+    "httpClient": "fetch",
+    "compilerOptions": {
+      "target": "ES2021",
+      "module": "commonjs",
+      "lib": ["ES2021", "dom"]
+    },
+    "generateEnumAs": "enum",
+    "typescriptVersion": "5.3.3",
+    "zodVersion": "3.22.0",
+    "namingStrategy": "base",
+    "httpLibrary": {
+      "name": "fetch",
+      "packages": {},
+      "languages": ["typescript"],
+      "types": {
+        "packageName": "@types/isomorphic-fetch",
+        "version": "^0.0.36"
+      }
+    },
+    "customQueries": {
+      "paths": [],
+      "rawQueries": [],
+      "queriesData": []
+    },
+    "devContainer": false,
+    "ai": false,
+    "includeOptionalSnippetParameters": true,
+    "responseHeaders": false,
+    "specType": "swagger"
+  },
+  "files": [
+    "package.json",
+    "tsconfig.json",
+    "examples/tsconfig.json",
+    "examples/package.json",
+    "examples/README.md",
+    "examples/src/index.ts",
+    "src/http/client.ts",
+    ".gitignore",
+    "src/services/base-service.ts",
+    "src/services/morse/morse-service.ts",
+    "src/services/braille/braille-service.ts",
+    "src/services/starwars/starwars-service.ts",
+    "src/services/startrek/startrek-service.ts",
+    "src/services/elvish/elvish-service.ts",
+    "src/services/characters/characters-service.ts",
+    "src/services/dialect/dialect-service.ts",
+    "src/services/pig-latin/pig-latin-service.ts",
+    "src/services/game-of-thrones/game-of-thrones-service.ts",
+    "src/services/english/english-service.ts",
+    "src/services/internet-fad/internet-fad-service.ts",
+    "src/index.ts",
+    "src/services/morse/index.ts",
+    "src/services/braille/index.ts",
+    "src/services/starwars/index.ts",
+    "src/services/startrek/index.ts",
+    "src/services/elvish/index.ts",
+    "src/services/characters/index.ts",
+    "src/services/dialect/index.ts",
+    "src/services/pig-latin/index.ts",
+    "src/services/game-of-thrones/index.ts",
+    "src/services/english/index.ts",
+    "src/services/internet-fad/index.ts",
+    "src/http/index.ts",
+    "src/http/handlers/handler-chain.ts",
+    "src/http/types.ts",
+    "src/http/error.ts",
+    "src/http/handlers/terminating-handler.ts",
+    "src/http/handlers/hook-handler.ts",
+    "src/http/hooks/custom-hook.ts",
+    "src/http/hooks/hook.ts",
+    "src/http/handlers/retry-handler.ts",
+    "src/http/environment.ts",
+    "src/http/handlers/response-validation-handler.ts",
+    "src/services/morse/request-params.ts",
+    "src/services/braille/request-params.ts",
+    "src/services/starwars/request-params.ts",
+    "src/services/startrek/request-params.ts",
+    "src/services/elvish/request-params.ts",
+    "src/services/characters/request-params.ts",
+    "src/services/dialect/request-params.ts",
+    "src/services/pig-latin/request-params.ts",
+    "src/services/game-of-thrones/request-params.ts",
+    "src/services/english/request-params.ts",
+    "src/services/internet-fad/request-params.ts",
+    "src/http/handlers/request-validation-handler.ts",
+    "src/http/transport/request.ts",
+    "src/http/transport/request-builder.ts",
+    "src/http/serialization/base-serializer.ts",
+    "src/http/serialization/query-serializer.ts",
+    "src/http/serialization/path-serializer.ts",
+    "src/http/serialization/header-serializer.ts",
+    "src/http/transport/request-fetch-adapter.ts",
+    "src/http/transport/transport-hook-adapter.ts",
+    "src/http/utils/line-decoder.ts",
+    "src/http/utils/response-matcher.ts",
+    "src/http/utils/content-type.ts",
+    "src/http/errors/validation-error.ts",
+    "src/http/transport/types.ts",
+    "documentation/services/PigLatinService.md",
+    "documentation/services/InternetFadService.md",
+    "documentation/services/StartrekService.md",
+    "documentation/services/ElvishService.md",
+    "documentation/services/GameOfThronesService.md",
+    "documentation/services/MorseService.md",
+    "documentation/services/DialectService.md",
+    "documentation/services/EnglishService.md",
+    "documentation/services/BrailleService.md",
+    "documentation/services/StarwarsService.md",
+    "documentation/services/CharactersService.md",
+    "README.md",
+    "./mcp/package.json",
+    "./mcp/tsconfig.json",
+    "./mcp/.gitignore",
+    "./mcp/src/index.ts",
+    "./mcp/README.md"
+  ]
+}

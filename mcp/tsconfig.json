@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2018",
+    "target": "ES2022",
     "module": "Node16",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -15,7 +15,6 @@
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "declarationMap": true,
-    "lib": ["ES2021", "dom"],
     "sourceMap": true
   },
   "include": ["src/"]
